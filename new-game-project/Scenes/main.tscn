@@ -24,9 +24,9 @@ limit_bottom = 1072
 position_smoothing_enabled = true
 
 [node name="FlashLight" parent="Main Enterance/MainPlayer" unique_id=1091398507 instance=ExtResource("3_8gbba")]
-y_sort_enabled = true
 position = Vector2(-5.9604645e-07, -8.000004)
 rotation = -1.5707964
 scale = Vector2(0.1, 0.1)
 
 [node name="ThunderStorm" parent="Main Enterance" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
+position = Vector2(589, 1033)
