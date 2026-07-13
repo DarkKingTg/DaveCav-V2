@@ -1,17 +1,42 @@
 [gd_scene format=3 uid="uid://bd88aclgpxf08"]
 
+[ext_resource type="AudioStream" uid="uid://b4nyikueuw6j" path="res://Sound Effects/Environment/Rain/Heavy Rain.mp3" id="1_cgjh6"]
+[ext_resource type="Script" uid="uid://cgrkjkkhjm32" path="res://Scripts/thunder_storm.gd" id="1_j12ln"]
+[ext_resource type="AudioStream" uid="uid://bunounyacv48q" path="res://Sound Effects/Environment/Ambiance/thunder rumble during a storm.wav" id="2_5xk0h"]
+[ext_resource type="AudioStream" uid="uid://dnytvmyiw4i3i" path="res://Sound Effects/Environment/Thunder/universfield loud thunder.mp3" id="4_3hc8d"]
+[ext_resource type="AudioStream" uid="uid://bnxdeeumae5b1" path="res://Sound Effects/Environment/Thunder/epic thunder boom.mp3" id="5_0sdkn"]
+
 [node name="ThunderStorm" type="Node2D" unique_id=1521175817]
-
-[node name="Rain" type="GPUParticles2D" parent="." unique_id=2123453543]
-
-[node name="RainSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=567402513]
-
-[node name="ThunderSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=1469585741]
+script = ExtResource("1_j12ln")
 
 [node name="Lightning" type="CanvasModulate" parent="." unique_id=104549747]
 
 [node name="Flash" type="ColorRect" parent="Lightning" unique_id=1615057479]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="ThunderTimer" type="Timer" parent="." unique_id=866995117]
+[node name="StormTimer" type="Timer" parent="." unique_id=866995117]
+one_shot = true
+
+[node name="Rain" type="GPUParticles2D" parent="." unique_id=2123453543]
+amount = 800
+lifetime = 2.0
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="." unique_id=189283941]
+stream = ExtResource("2_5xk0h")
+autoplay = true
+
+[node name="RainSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=567402513]
+stream = ExtResource("1_cgjh6")
+autoplay = true
+parameters/looping = true
+
+[node name="ThunderSoundEffect1" type="AudioStreamPlayer2D" parent="." unique_id=1987414035]
+stream = ExtResource("4_3hc8d")
+
+[node name="ThunderSoundEffect2" type="AudioStreamPlayer2D" parent="." unique_id=83942890]
+stream = ExtResource("5_0sdkn")

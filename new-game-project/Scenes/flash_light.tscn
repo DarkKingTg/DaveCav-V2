@@ -5,9 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://d3kom80elp52i" path="res://Sound Effects/Items/FlashLight/flash-light-sounds.mp3" id="3_pniu5"]
 
 [node name="FlashLight" type="Node2D" unique_id=1091398507]
+y_sort_enabled = true
 script = ExtResource("1_3wyu4")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1817849201]
+y_sort_enabled = true
 position = Vector2(4, -2)
 energy = 2.0
 shadow_enabled = true

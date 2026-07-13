@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4nyikueuw6j"
+path="res://.godot/imported/Heavy Rain.mp3-4af99a24fb60e9fd528b673548c1357a.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Environment/Rain/Heavy Rain.mp3"
+dest_files=["res://.godot/imported/Heavy Rain.mp3-4af99a24fb60e9fd528b673548c1357a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
