@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdgl18stodhph"
+path="res://.godot/imported/thunder sound.mp3-bf3dc9e295b8bcb8abc9f7e1e42e7ea9.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Environment/Thunder/thunder sound.mp3"
+dest_files=["res://.godot/imported/thunder sound.mp3-bf3dc9e295b8bcb8abc9f7e1e42e7ea9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

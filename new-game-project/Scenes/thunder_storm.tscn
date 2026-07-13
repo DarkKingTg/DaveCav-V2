@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bd88aclgpxf08"]
+
+[node name="ThunderStorm" type="Node2D" unique_id=1521175817]
+
+[node name="Rain" type="GPUParticles2D" parent="." unique_id=2123453543]
+
+[node name="RainSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=567402513]
+
+[node name="ThunderSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=1469585741]
+
+[node name="Lightning" type="CanvasModulate" parent="." unique_id=104549747]
+
+[node name="Flash" type="ColorRect" parent="Lightning" unique_id=1615057479]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ThunderTimer" type="Timer" parent="." unique_id=866995117]

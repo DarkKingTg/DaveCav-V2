@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://155xx7s6y6ta"]
+
+[ext_resource type="PackedScene" uid="uid://b007fnbbdw8kq" path="res://Scenes/main_enterance.tscn" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://becj5wydj0egj" path="res://Scenes/flash_light.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ddys6upp54ckr" path="res://Scenes/main_player.tscn" id="3_kry3j"]
+
+[node name="Main" type="Node2D" unique_id=1377669632]
+
+[node name="Main Enterance" parent="." unique_id=2017178467 instance=ExtResource("1_8gbba")]
+
+[node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
+z_index = 0
+position = Vector2(589, 1041)
+collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="Main Enterance/MainPlayer" unique_id=726029388]
+position = Vector2(0, -11)
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1258
+limit_bottom = 1072
+position_smoothing_enabled = true
+
+[node name="FlashLight" parent="Main Enterance/MainPlayer" unique_id=1091398507 instance=ExtResource("3_8gbba")]
+y_sort_enabled = true
+position = Vector2(-5.9604645e-07, -8.000004)
+rotation = -1.5707964
+scale = Vector2(0.1, 0.1)

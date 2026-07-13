@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnxdeeumae5b1"
+path="res://.godot/imported/epic thunder boom.mp3-1bdfe4a6dc4b065205f6ce6f09767e89.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Environment/Thunder/epic thunder boom.mp3"
+dest_files=["res://.godot/imported/epic thunder boom.mp3-1bdfe4a6dc4b065205f6ce6f09767e89.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

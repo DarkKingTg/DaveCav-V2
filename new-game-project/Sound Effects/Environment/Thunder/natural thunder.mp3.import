@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bneey8frsi2gg"
+path="res://.godot/imported/natural thunder.mp3-e57649c049417fd1e35244c7cd3c7c1d.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Environment/Thunder/natural thunder.mp3"
+dest_files=["res://.godot/imported/natural thunder.mp3-e57649c049417fd1e35244c7cd3c7c1d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

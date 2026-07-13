@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://becj5wydj0egj"]
+
+[ext_resource type="Script" uid="uid://537tylgjirit" path="res://Scripts/flash_light.gd" id="1_3wyu4"]
+[ext_resource type="Texture2D" uid="uid://dt7wgetal2yia" path="res://Assets/Character/MainCharacter/Items/Torch/torch_light.png" id="1_7a5wa"]
+[ext_resource type="AudioStream" uid="uid://d3kom80elp52i" path="res://Sound Effects/Items/FlashLight/flash-light-sounds.mp3" id="3_pniu5"]
+
+[node name="FlashLight" type="Node2D" unique_id=1091398507]
+script = ExtResource("1_3wyu4")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1817849201]
+position = Vector2(4, -2)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("1_7a5wa")
+offset = Vector2(600, -10)
+texture_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1945597974]
+stream = ExtResource("3_pniu5")
