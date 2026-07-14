@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dyp3t1c142cv8"]
+
+[sub_resource type="TileSet" id="TileSet_cpnc0"]
+
+[node name="MansionInterior" type="TileMap" unique_id=1911861753]
+tile_set = SubResource("TileSet_cpnc0")
+format = 2

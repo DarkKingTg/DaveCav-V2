@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b007fnbbdw8kq" path="res://Scenes/main_enterance.tscn" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://becj5wydj0egj" path="res://Scenes/flash_light.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://b66fe73u7p6rn" path="res://Scripts/camera_2d.gd" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ddys6upp54ckr" path="res://Scenes/main_player.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bd88aclgpxf08" path="res://Scenes/thunder_storm.tscn" id="4_jjvhh"]
 
@@ -22,11 +23,12 @@ limit_top = 0
 limit_right = 1258
 limit_bottom = 1072
 position_smoothing_enabled = true
+script = ExtResource("3_21xkr")
 
 [node name="FlashLight" parent="Main Enterance/MainPlayer" unique_id=1091398507 instance=ExtResource("3_8gbba")]
 position = Vector2(-5.9604645e-07, -8.000004)
 rotation = -1.5707964
 scale = Vector2(0.1, 0.1)
 
-[node name="ThunderStorm" parent="Main Enterance" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
-position = Vector2(589, 1033)
+[node name="ThunderStorm" parent="Main Enterance/MainPlayer" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
+position = Vector2(2, -5)
