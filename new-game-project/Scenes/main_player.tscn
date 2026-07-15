@@ -208,16 +208,15 @@ animations = [{
 size = Vector2(8.5, 26)
 
 [sub_resource type="Gradient" id="Gradient_64x4p"]
-offsets = PackedFloat32Array(0, 0.22580644, 0.6182796)
-colors = PackedColorArray(1, 1, 1, 1, 0.8956522, 0.8956522, 0.8956522, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.1827957, 0.4784946, 0.7096774)
+colors = PackedColorArray(1, 1, 1, 1, 0.8956522, 0.8956522, 0.8956522, 1, 0.29462242, 0.29462242, 0.29462242, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_57o8e"]
 gradient = SubResource("Gradient_64x4p")
 fill = 1
-fill_from = Vector2(0.47008547, 0.43162394)
+fill_from = Vector2(0.50427353, 0.508547)
 
 [node name="MainPlayer" type="CharacterBody2D" unique_id=1553743187]
-z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_64x4p")
 

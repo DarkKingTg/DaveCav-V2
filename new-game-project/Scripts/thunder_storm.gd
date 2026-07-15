@@ -4,7 +4,7 @@ extends Node2D
 @onready var thunder1 = $ThunderSoundEffect1
 @onready var thunder2 = $ThunderSoundEffect2
 @onready var rain = $RainSoundEffect
-
+@onready var camera = $"../Camera2D"
 func _ready():
 	randomize()
 	rain.play()
@@ -33,5 +33,7 @@ func lightning_sequence():
 
 	if randi() % 2 == 0:
 		thunder1.play()
+		camera.shake(8)
 	else:
 		thunder2.play()
+		camera.shake(8)

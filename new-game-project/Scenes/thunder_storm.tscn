@@ -25,11 +25,10 @@ shader_parameter/slant = 0.37100006512250006
 script = ExtResource("1_j12ln")
 
 [node name="Lightning" type="CanvasModulate" parent="." unique_id=104549747]
+z_index = 5
 
 [node name="Flash" type="ColorRect" parent="Lightning" unique_id=257641100]
-light_mask = 3
-visibility_layer = 3
-z_index = 2
+z_index = 4
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,7 +40,7 @@ offset_right = 276.0
 offset_bottom = 214.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+color = Color(18.892157, 18.892157, 18.892157, 0)
 
 [node name="Rain" type="ColorRect" parent="Lightning" unique_id=478529139]
 z_index = 2

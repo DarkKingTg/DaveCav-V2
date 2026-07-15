@@ -11,7 +11,6 @@
 [node name="Main Enterance" parent="." unique_id=2017178467 instance=ExtResource("1_8gbba")]
 
 [node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
-z_index = 0
 position = Vector2(589, 1041)
 collision_mask = 3
 
