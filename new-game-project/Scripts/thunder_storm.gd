@@ -33,7 +33,9 @@ func lightning_sequence():
 
 	if randi() % 2 == 0:
 		thunder1.play()
-		camera.shake(8)
+		print("Thunder1")
+		camera.shake(9)
 	else:
 		thunder2.play()
-		camera.shake(8)
+		print("thunder2")
+		camera.shake(11)

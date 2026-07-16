@@ -5,14 +5,22 @@
 [ext_resource type="Script" uid="uid://b66fe73u7p6rn" path="res://Scripts/camera_2d.gd" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ddys6upp54ckr" path="res://Scenes/main_player.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bd88aclgpxf08" path="res://Scenes/thunder_storm.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ndeniwm71i1g" path="res://Scenes/ui_elements.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node2D" unique_id=1377669632]
 
 [node name="Main Enterance" parent="." unique_id=2017178467 instance=ExtResource("1_8gbba")]
 
 [node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
-position = Vector2(589, 1041)
-collision_mask = 3
+position = Vector2(599, 933)
+
+[node name="FlashLight" parent="Main Enterance/MainPlayer" unique_id=1091398507 instance=ExtResource("3_8gbba")]
+position = Vector2(-5.9604645e-07, -8.000004)
+rotation = -1.5707964
+scale = Vector2(0.1, 0.1)
+
+[node name="ThunderStorm" parent="Main Enterance/MainPlayer" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
+position = Vector2(0, -8)
 
 [node name="Camera2D" type="Camera2D" parent="Main Enterance/MainPlayer" unique_id=726029388]
 position = Vector2(0, -11)
@@ -24,10 +32,4 @@ limit_bottom = 1072
 position_smoothing_enabled = true
 script = ExtResource("3_21xkr")
 
-[node name="FlashLight" parent="Main Enterance/MainPlayer" unique_id=1091398507 instance=ExtResource("3_8gbba")]
-position = Vector2(-5.9604645e-07, -8.000004)
-rotation = -1.5707964
-scale = Vector2(0.1, 0.1)
-
-[node name="ThunderStorm" parent="Main Enterance/MainPlayer" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
-position = Vector2(2, -5)
+[node name="UI Elements" parent="." unique_id=116541721 instance=ExtResource("6_21xkr")]

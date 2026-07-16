@@ -3,6 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://s2k1li3xc2bp" path="res://Assets/Character/MainCharacter/character3.png" id="1_3chl5"]
 [ext_resource type="Script" uid="uid://dcc7xgkw7bdv1" path="res://Scripts/main_player.gd" id="1_64x4p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55f6o"]
+size = Vector2(8.5, 26)
+
+[sub_resource type="Gradient" id="Gradient_64x4p"]
+offsets = PackedFloat32Array(0, 0.1827957, 0.4784946, 0.7096774)
+colors = PackedColorArray(1, 1, 1, 1, 0.8956522, 0.8956522, 0.8956522, 1, 0.29462242, 0.29462242, 0.29462242, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57o8e"]
+gradient = SubResource("Gradient_64x4p")
+fill = 1
+fill_from = Vector2(0.50427353, 0.508547)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_64x4p"]
 atlas = ExtResource("1_3chl5")
 region = Rect2(0, 0, 32, 32)
@@ -204,29 +216,9 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_55f6o"]
-size = Vector2(8.5, 26)
-
-[sub_resource type="Gradient" id="Gradient_64x4p"]
-offsets = PackedFloat32Array(0, 0.1827957, 0.4784946, 0.7096774)
-colors = PackedColorArray(1, 1, 1, 1, 0.8956522, 0.8956522, 0.8956522, 1, 0.29462242, 0.29462242, 0.29462242, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_57o8e"]
-gradient = SubResource("Gradient_64x4p")
-fill = 1
-fill_from = Vector2(0.50427353, 0.508547)
-
 [node name="MainPlayer" type="CharacterBody2D" unique_id=1553743187]
 y_sort_enabled = true
 script = ExtResource("1_64x4p")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=516921800]
-y_sort_enabled = true
-position = Vector2(0, -13)
-sprite_frames = SubResource("SpriteFrames_ya02j")
-animation = &"Idle_Down"
-autoplay = "Idle_Down"
-offset = Vector2(0, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512569459]
 y_sort_enabled = true
@@ -240,3 +232,11 @@ energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_57o8e")
 texture_scale = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=516921800]
+y_sort_enabled = true
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_ya02j")
+animation = &"Idle_Down"
+autoplay = "Idle_Down"
+offset = Vector2(0, 2)
