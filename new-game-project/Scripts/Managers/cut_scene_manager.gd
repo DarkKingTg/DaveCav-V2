@@ -3,6 +3,7 @@ class_name CutSceneManager
 
 signal cutscene_started(cutscene_name: String)
 signal cutscene_finished(cutscene_name: String)
+signal walk_finished
 
 @export_group("References")
 @export var player: CharacterBody2D
@@ -25,23 +26,17 @@ var _active_target_area: Area2D = null
 ####################################################
 
 func begin_cutscene(cutscene_name: String) -> void:
-	print("Cutscene Started")
 	if is_cutscene_playing:
 		push_warning("Cutscene already running: %s" % current_cutscene)
 		return
-
 	is_cutscene_playing = true
 	current_cutscene = cutscene_name
-
 	GameState.begin_cutscene()
-
 	_disable_player()
-
 	cutscene_started.emit(current_cutscene)
 
-
 func end_cutscene() -> void:
-
+	print("END CUTSCENE CALLED")
 	if !is_cutscene_playing:
 		return
 
@@ -54,6 +49,9 @@ func end_cutscene() -> void:
 	cutscene_finished.emit(current_cutscene)
 
 	current_cutscene = ""
+	GameState.set_cutscene_active(false)
+
+	print("Cutscene Active:", GameState.is_cutscene_active)
 
 
 ####################################################
@@ -102,14 +100,13 @@ func walk_player_to(target_position: Vector2, arrival_area: Area2D = null) -> vo
 
 	_active_target_area = null
 	_is_walking = false
-
+	walk_finished.emit()
 
 ####################################################
 # CAMERA HELPERS
 ####################################################
 
 func lock_camera() -> void:
-
 	if camera == null:
 		return
 
@@ -117,12 +114,10 @@ func lock_camera() -> void:
 
 
 func unlock_camera() -> void:
-
 	if camera == null:
 		return
 
 	camera.enabled = true
-
 
 ####################################################
 # FUTURE PLACEHOLDERS
@@ -131,14 +126,11 @@ func unlock_camera() -> void:
 func play_dialogue() -> void:
 	pass
 
-
 func fade_in() -> void:
 	pass
 
-
 func fade_out() -> void:
 	pass
-
 
 func shake_camera() -> void:
 	pass
@@ -148,26 +140,21 @@ func shake_camera() -> void:
 ####################################################
 
 func stop_cutscene() -> void:
-
 	if !is_cutscene_playing:
 		return
-
+		
 	if player != null and player.has_method("stop_auto_walk"):
 		player.stop_auto_walk()
-
 	_target_reached = true
-
+	
 	if _active_target_area != null:
-
 		if _active_target_area.body_entered.is_connected(_on_target_area_body_entered):
 			_active_target_area.body_entered.disconnect(_on_target_area_body_entered)
 
 	_active_target_area = null
 	_is_walking = false
-
 	end_cutscene()
-
-
+	
 func skip_cutscene() -> void:
 	stop_cutscene()
 
@@ -175,9 +162,8 @@ func skip_cutscene() -> void:
 ####################################################
 # PLAYER CONTROL
 ####################################################
-
 func _disable_player() -> void:
-	print("Disable Player Called")
+
 	if player == null:
 		return
 
@@ -186,7 +172,6 @@ func _disable_player() -> void:
 		if player.has_method("set_controls_enabled"):
 			player.set_controls_enabled(false)
 		else:
-			print(player)
 			player.controls_enabled = false
 
 	if pause_flashlight:
@@ -198,17 +183,15 @@ func _disable_player() -> void:
 
 
 func _enable_player() -> void:
-
 	if player == null:
 		return
 
 	if disable_player_controls:
-
 		if player.has_method("set_controls_enabled"):
 			player.set_controls_enabled(true)
 		else:
 			player.controls_enabled = true
-
+			
 	if pause_flashlight:
 
 		var flashlight = player.get_node_or_null("FlashLight")
@@ -216,29 +199,27 @@ func _enable_player() -> void:
 		if flashlight != null:
 			flashlight.set_process(true)
 
-
 ####################################################
 # STATUS
 ####################################################
-
 func is_playing() -> bool:
 	return is_cutscene_playing
-
-
 func get_current_cutscene() -> String:
 	return current_cutscene
-
 
 ####################################################
 # SIGNALS
 ####################################################
-
 func _on_target_area_body_entered(body: Node2D) -> void:
-
 	if player == null:
 		return
-
 	if body != player:
 		return
-
 	_target_reached = true
+
+func start_walk(target_position: Vector2, arrival_area: Area2D = null) -> void:
+
+	if _is_walking:
+		return
+
+	walk_player_to(target_position, arrival_area)

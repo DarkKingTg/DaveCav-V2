@@ -29,9 +29,11 @@ collision_layer = 128
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main Enterance/GateTarget" unique_id=2094625108]
+position = Vector2(-1.5, -5)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="StopPoint" type="Marker2D" parent="Main Enterance/GateTarget" unique_id=1853625511]
+position = Vector2(-1.5, -5)
 
 [node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
 position = Vector2(599, 933)

@@ -29,10 +29,12 @@ func _physics_process(delta: float) -> void:
 	####################################################
 
 	if auto_walk:
+
 		var direction = auto_walk_target - global_position
 
 		if direction.length() <= AUTO_WALK_STOP_DISTANCE:
 
+			velocity = Vector2.ZERO
 			stop_auto_walk()
 
 		else:
@@ -139,7 +141,9 @@ func _physics_process(delta: float) -> void:
 	####################################################
 
 	if direction != Vector2.ZERO:
+
 		velocity = direction * current_speed
+
 		if sprinting:
 			sprite.speed_scale = 1.0
 		else:
@@ -161,9 +165,12 @@ func _physics_process(delta: float) -> void:
 				last_direction = 0
 				sprite.flip_h = false
 				sprite.play("Walk_Down")
+
 	else:
+
 		velocity = Vector2.ZERO
 		sprite.speed_scale = 1.0
+
 		match last_direction:
 			0:
 				sprite.play("Idle_Down")
@@ -177,43 +184,64 @@ func _physics_process(delta: float) -> void:
 
 func _input(event):
 
+	####################################################
+	# CUTSCENE SAFETY
+	####################################################
+
+	if GameState.is_cutscene_active:
+		return
+
 	if !controls_enabled or auto_walk:
 		return
+
 	if velocity != Vector2.ZERO:
 		return
+
 	if event is InputEventMouseMotion:
+
 		var mouse_dir = get_global_mouse_position() - global_position
-		
+
 		if abs(mouse_dir.x) > abs(mouse_dir.y):
+
 			last_direction = 2
 			sprite.flip_h = mouse_dir.x < 0
+
 		else:
+
 			if mouse_dir.y < 0:
 				last_direction = 1
 				sprite.flip_h = false
 			else:
 				last_direction = 0
 				sprite.flip_h = false
-				
+
+
 ####################################################
 # PLAYER CONTROL FUNCTIONS
 ####################################################
 
 func set_controls_enabled(enabled: bool) -> void:
-	print("Controls Enabled =", enabled)
+
 	controls_enabled = enabled
+
 
 ####################################################
 # AUTO WALK FUNCTIONS
 ####################################################
 
 func start_auto_walk(target: Vector2) -> void:
+
 	auto_walk = true
 	auto_walk_target = target
 
+
 func stop_auto_walk() -> void:
+
 	auto_walk = false
+	auto_walk_target = global_position
+
 	velocity = Vector2.ZERO
+
 	sprite.speed_scale = 1.0
 
 	match last_direction:

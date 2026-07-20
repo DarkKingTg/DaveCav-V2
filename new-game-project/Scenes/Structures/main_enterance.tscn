@@ -2385,7 +2385,7 @@ tile_set = SubResource("TileSet_dand5")
 format = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1271889592]
-color = Color(0.1406, 0.16454004, 0.38, 1)
+color = Color(0.049005244, 0.061734747, 0.17630002, 1)
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=398870474]
 use_parent_material = true
@@ -2509,36 +2509,36 @@ position = Vector2(206, -535)
 [node name="window_lights" type="Node2D" parent="." unique_id=1412345871]
 
 [node name="WindowsLight4" type="PointLight2D" parent="window_lights" unique_id=1290904155]
-position = Vector2(999.2517, -94.5)
-scale = Vector2(0.23240885, 0.15234376)
+position = Vector2(999, -94)
+scale = Vector2(0.2734375, 0.20312501)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight5" type="PointLight2D" parent="window_lights" unique_id=27957678]
-position = Vector2(1127, -61.000004)
-scale = Vector2(0.11718715, 0.16601564)
+position = Vector2(1125.5, -61.5)
+scale = Vector2(0.1757813, 0.1992188)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight2" type="PointLight2D" parent="window_lights" unique_id=1281944117]
-position = Vector2(469.00003, -63)
-scale = Vector2(0.20507807, 0.14062501)
+position = Vector2(470, -60)
+scale = Vector2(0.26562482, 0.21093753)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight" type="PointLight2D" parent="window_lights" unique_id=656703386]
-position = Vector2(262, -94.00001)
-scale = Vector2(0.22363262, 0.15234376)
+position = Vector2(263, -93)
+scale = Vector2(0.2734374, 0.2109375)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight3" type="PointLight2D" parent="window_lights" unique_id=1621967842]
-position = Vector2(789, -62.000004)
-scale = Vector2(0.20507807, 0.14062501)
+position = Vector2(790, -60.999996)
+scale = Vector2(0.2890625, 0.21875)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight6" type="PointLight2D" parent="window_lights" unique_id=1656279876]
-position = Vector2(134.5, -60.000004)
-scale = Vector2(0.12109371, 0.15234376)
+position = Vector2(133.5, -61)
+scale = Vector2(0.16796874, 0.21875001)
 texture = ExtResource("8_2chbg")
 
 [node name="WindowsLight7" type="PointLight2D" parent="window_lights" unique_id=964120824]
-position = Vector2(631, -50.25)
-scale = Vector2(0.22363262, 0.1933594)
+position = Vector2(629.5, -49.5)
+scale = Vector2(0.3085938, 0.26953122)
 texture = ExtResource("8_2chbg")
