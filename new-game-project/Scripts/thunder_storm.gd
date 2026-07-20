@@ -60,11 +60,9 @@ func lightning_sequence():
 
 	if randi() % 2 == 0:
 		thunder1.play()
-		print("Thunder1")
 		camera.shake(9)
 		flicker_window_lights()
 	else:
 		thunder2.play()
-		print("Thunder2")
 		camera.shake(11)
 		flicker_window_lights()
