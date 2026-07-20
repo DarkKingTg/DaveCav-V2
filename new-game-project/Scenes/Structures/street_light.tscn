@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dgyex7vj6h8f8"]
+
+[ext_resource type="Texture2D" uid="uid://bs6mfe07xw4ku" path="res://Assets/Environment/Outside/Graveyard/Graveyard_Set.png" id="1_2dnhp"]
+[ext_resource type="Texture2D" uid="uid://ba0f2fvvi5ugk" path="res://Assets/Character/MainCharacter/Items/Torch/light_point.webp" id="1_4ebqh"]
+[ext_resource type="Script" uid="uid://d3efpnp12j0y0" path="res://Scripts/Objects/LampFlicker.gd" id="1_l2ady"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ebqh"]
+atlas = ExtResource("1_2dnhp")
+region = Rect2(16.031822, 304.0968, 16.51793, 64.7359)
+
+[node name="Lamp" type="Node2D" unique_id=645383715]
+script = ExtResource("1_l2ady")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201940584]
+y_sort_enabled = true
+texture = SubResource("AtlasTexture_4ebqh")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=240225770]
+position = Vector2(0, -10)
+scale = Vector2(0.5, 0.5)
+energy = 0.75
+texture = ExtResource("1_4ebqh")

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d2o6wxrykssdj"]
+
+[ext_resource type="Script" uid="uid://d3efpnp12j0y0" path="res://Scripts/Objects/LampFlicker.gd" id="1_0j013"]
+[ext_resource type="Texture2D" uid="uid://bs6mfe07xw4ku" path="res://Assets/Environment/Outside/Graveyard/Graveyard_Set.png" id="1_jybat"]
+[ext_resource type="Texture2D" uid="uid://ba0f2fvvi5ugk" path="res://Assets/Character/MainCharacter/Items/Torch/light_point.webp" id="2_7au1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7au1n"]
+atlas = ExtResource("1_jybat")
+region = Rect2(31.894636, 304.48242, 16.528368, 31.381561)
+
+[node name="WallLight" type="Node2D" unique_id=884048767]
+script = ExtResource("1_0j013")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1158225697]
+position = Vector2(9.536743e-07, 6)
+scale = Vector2(0.5722657, 0.5078125)
+energy = 0.8
+texture = ExtResource("2_7au1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=739202193]
+texture = SubResource("AtlasTexture_7au1n")

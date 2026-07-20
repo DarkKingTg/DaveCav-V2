@@ -1,15 +1,37 @@
 [gd_scene format=3 uid="uid://155xx7s6y6ta"]
 
-[ext_resource type="PackedScene" uid="uid://b007fnbbdw8kq" path="res://Scenes/main_enterance.tscn" id="1_8gbba"]
-[ext_resource type="PackedScene" uid="uid://becj5wydj0egj" path="res://Scenes/flash_light.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://kyx6yvn35gss" path="res://Scripts/main.gd" id="1_6bp64"]
+[ext_resource type="PackedScene" uid="uid://b007fnbbdw8kq" path="res://Scenes/Structures/main_enterance.tscn" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://becj5wydj0egj" path="res://Scenes/Items/flash_light.tscn" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://b66fe73u7p6rn" path="res://Scripts/camera_2d.gd" id="3_21xkr"]
-[ext_resource type="PackedScene" uid="uid://ddys6upp54ckr" path="res://Scenes/main_player.tscn" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://bd88aclgpxf08" path="res://Scenes/thunder_storm.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://ndeniwm71i1g" path="res://Scenes/ui_elements.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://ddys6upp54ckr" path="res://Scenes/Structures/main_player.tscn" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://bdjda5ihty1bu" path="res://Scripts/Structures/main_enterance.gd" id="4_hptm8"]
+[ext_resource type="PackedScene" uid="uid://bd88aclgpxf08" path="res://Scenes/Structures/thunder_storm.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ndeniwm71i1g" path="res://Scenes/UI/ui_elements.tscn" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://bhu6r16gdrw8p" path="res://Scripts/Managers/cut_scene_manager.gd" id="8_344ge"]
+[ext_resource type="Script" uid="uid://l3jc8imt4bna" path="res://Scripts/Managers/intro_sequence.gd" id="10_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bgsmjc881igrr" path="res://Scenes/Cutscenes/intro_ui.tscn" id="11_d1ilt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
 
 [node name="Main" type="Node2D" unique_id=1377669632]
+script = ExtResource("1_6bp64")
+
+[node name="UI" parent="." unique_id=116541721 instance=ExtResource("6_21xkr")]
 
 [node name="Main Enterance" parent="." unique_id=2017178467 instance=ExtResource("1_8gbba")]
+script = ExtResource("4_hptm8")
+
+[node name="GateTarget" type="Area2D" parent="Main Enterance" unique_id=2112816464]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+collision_layer = 128
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Enterance/GateTarget" unique_id=2094625108]
+shape = SubResource("RectangleShape2D_hptm8")
+
+[node name="StopPoint" type="Marker2D" parent="Main Enterance/GateTarget" unique_id=1853625511]
 
 [node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
 position = Vector2(599, 933)
@@ -20,16 +42,36 @@ rotation = -1.5707964
 scale = Vector2(0.1, 0.1)
 
 [node name="ThunderStorm" parent="Main Enterance/MainPlayer" unique_id=1521175817 instance=ExtResource("4_jjvhh")]
-position = Vector2(0, -8)
 
 [node name="Camera2D" type="Camera2D" parent="Main Enterance/MainPlayer" unique_id=726029388]
 position = Vector2(0, -11)
 zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-limit_right = 1258
-limit_bottom = 1072
+limit_left = -396
+limit_top = -511
+limit_right = 1591
+limit_bottom = 1077
 position_smoothing_enabled = true
 script = ExtResource("3_21xkr")
 
-[node name="UI Elements" parent="." unique_id=116541721 instance=ExtResource("6_21xkr")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main Enterance" unique_id=1828248404]
+root_node = NodePath("../..")
+
+[node name="CutSceneManager" type="Node" parent="Main Enterance" unique_id=1169596762 node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("8_344ge")
+player = NodePath("../MainPlayer")
+camera = NodePath("../MainPlayer/Camera2D")
+
+[node name="Intro Sequence" type="Node" parent="Main Enterance/CutSceneManager" unique_id=287525354 node_paths=PackedStringArray("cutscene_manager", "gate_marker", "gate_arrival", "intro_ui", "flashlight", "thunder_storm")]
+script = ExtResource("10_d1ilt")
+cutscene_manager = NodePath("..")
+gate_marker = NodePath("../../GateTarget/StopPoint")
+gate_arrival = NodePath("../../GateTarget")
+intro_ui = NodePath("../../IntroUI")
+flashlight = NodePath("../../MainPlayer/FlashLight")
+thunder_storm = NodePath("../../MainPlayer/ThunderStorm")
+
+[node name="Ending Sequence" type="Node" parent="Main Enterance/CutSceneManager" unique_id=1554556066]
+
+[node name="IntroUI" parent="Main Enterance" unique_id=206686395 instance=ExtResource("11_d1ilt")]
+
+[connection signal="mouse_entered" from="Main Enterance/GateTarget" to="Main Enterance/CutSceneManager" method="_on_gate_target_mouse_entered"]

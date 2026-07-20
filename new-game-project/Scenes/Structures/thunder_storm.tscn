@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bd88aclgpxf08"]
+
+[ext_resource type="AudioStream" uid="uid://b4nyikueuw6j" path="res://Sound Effects/Environment/Rain/Heavy Rain.mp3" id="1_cgjh6"]
+[ext_resource type="Script" uid="uid://cgrkjkkhjm32" path="res://Scripts/thunder_storm.gd" id="1_j12ln"]
+[ext_resource type="Shader" uid="uid://b81gcckprlfaw" path="res://Assets/Environment/Outside/Rain/rain_and_snow_shader.gdshader" id="2_3hc8d"]
+[ext_resource type="AudioStream" uid="uid://bunounyacv48q" path="res://Sound Effects/Environment/Ambiance/thunder rumble during a storm.wav" id="2_5xk0h"]
+[ext_resource type="AudioStream" uid="uid://dnytvmyiw4i3i" path="res://Sound Effects/Environment/Thunder/universfield loud thunder.mp3" id="4_3hc8d"]
+[ext_resource type="AudioStream" uid="uid://bnxdeeumae5b1" path="res://Sound Effects/Environment/Thunder/epic thunder boom.mp3" id="5_0sdkn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xk0h"]
+shader = ExtResource("2_3hc8d")
+shader_parameter/rain_amount = 1000.0
+shader_parameter/near_rain_length = 0.00999999977648
+shader_parameter/far_rain_length = 0.00999999977648
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.18000000529012
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.50900002091762
+shader_parameter/rain_color = Color(1, 1, 1, 1)
+shader_parameter/base_rain_speed = 0.85100003716262
+shader_parameter/additional_rain_speed = 0.64600002742512
+shader_parameter/slant = 0.37100006512250006
+
+[node name="ThunderStorm" type="Node2D" unique_id=1521175817]
+script = ExtResource("1_j12ln")
+
+[node name="Lightning" type="CanvasModulate" parent="." unique_id=104549747]
+z_index = 5
+
+[node name="Flash" type="ColorRect" parent="Lightning" unique_id=257641100]
+z_index = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -221.0
+offset_right = 288.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(18.892157, 18.892157, 18.892157, 0)
+
+[node name="Rain" type="ColorRect" parent="Lightning" unique_id=478529139]
+z_index = 2
+material = SubResource("ShaderMaterial_5xk0h")
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -248.0
+offset_right = 267.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="StormTimer" type="Timer" parent="." unique_id=866995117]
+one_shot = true
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="." unique_id=189283941]
+stream = ExtResource("2_5xk0h")
+autoplay = true
+
+[node name="RainSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=567402513]
+stream = ExtResource("1_cgjh6")
+autoplay = true
+parameters/looping = true
+
+[node name="ThunderSoundEffect1" type="AudioStreamPlayer2D" parent="." unique_id=1987414035]
+stream = ExtResource("4_3hc8d")
+
+[node name="ThunderSoundEffect2" type="AudioStreamPlayer2D" parent="." unique_id=83942890]
+stream = ExtResource("5_0sdkn")
