@@ -61,50 +61,77 @@ func play_intro() -> void:
 	# START STORY
 	####################################################
 
-	if intro_ui != null:
-		intro_ui.play_intro()
+	intro_ui.play_intro()
 
 
 	####################################################
-	# WALK PLAYER
+	# WAIT FOR WORLD REVEAL
 	####################################################
+
+	await intro_ui.reveal_world
+
+
+	####################################################
+	# START WORLD REVEAL
+	####################################################
+
+	var fade_tween := intro_ui.fade_out()
+	var move_tween := intro_ui.move_story_to_bottom()
 
 	if gate_marker == null:
 
-		push_error("IntroManager : Gate Marker missing.")
+		push_error("IntroManager: Gate Marker missing.")
 
 		cutscene_manager.end_cutscene()
 
 		return
 
-	await cutscene_manager.walk_player_to(
+
+	####################################################
+	# PLAYER STARTS WALKING
+	####################################################
+
+	cutscene_manager.start_walk(
 		gate_marker.global_position,
 		gate_arrival
 	)
 
 
 	####################################################
-	# WAIT UNTIL STORY FINISHES
+	# WAIT FOR STORY
 	####################################################
-
-	if intro_ui != null:
-
-		await intro_ui.intro_finished
-
+	print("Waiting for intro...")
+	await intro_ui.intro_finished
+	print("Intro finished.")
 
 	####################################################
-	# FADE OUT
+	# WAIT FOR PLAYER
+	####################################################
+	print("Waiting for walk...")
+	await cutscene_manager.walk_finished
+	print("Walk finished.")
+
+	####################################################
+	# WAIT FOR ANIMATIONS
 	####################################################
 
-	if intro_ui != null:
-		await intro_ui.fade_out()
+	await get_tree().create_timer(
+	max(intro_ui.fade_duration, intro_ui.story_move_duration)
+).timeout
+
+	####################################################
+	# HIDE INTRO UI
+	####################################################
+
+	intro_ui.hide()
+
 
 	####################################################
 	# END CUTSCENE
 	####################################################
-
+	print("Ending cutscene...")
 	cutscene_manager.end_cutscene()
-
+	print("Cutscene ended.")
 
 	####################################################
 	# OBJECTIVE
@@ -113,18 +140,16 @@ func play_intro() -> void:
 	if objective_ui != null:
 
 		if objective_ui.has_method("show_objective"):
-
 			objective_ui.show_objective(
 				"Enter the mansion through the gate."
 			)
 
 
 	####################################################
-	# CONTROLS
+	# CONTROL HINT
 	####################################################
 
 	if control_hint_ui != null:
 
 		if control_hint_ui.has_method("show_hint_movement_only"):
-
 			control_hint_ui.show_hint_movement_only()

@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0.014999987, 0.09, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="StoryContainer" type="MarginContainer" parent="." unique_id=845077316]
 anchors_preset = 15
@@ -32,4 +32,3 @@ theme_override_font_sizes/normal_font_size = 16
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-vertical_alignment = 2
