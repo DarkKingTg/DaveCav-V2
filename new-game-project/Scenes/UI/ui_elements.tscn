@@ -1,21 +1,10 @@
 [gd_scene format=3 uid="uid://ndeniwm71i1g"]
 
-[ext_resource type="Script" uid="uid://bt651b8k6rkue" path="res://Scripts/UI/MainUI.gd" id="1_vhyun"]
+[ext_resource type="Script" uid="uid://cjhs2u1sie27y" path="res://Scripts/Managers/GameManager.gd" id="1_vhyun"]
 [ext_resource type="Texture2D" uid="uid://dvg2xrf6fupwu" path="res://Assets/UI/UIBundleFree/UIBundleFree/FreeHorrorUi.png" id="2_ddsy3"]
 [ext_resource type="Script" uid="uid://cx5345xnsqi7y" path="res://Scripts/UI/pause_menu.gd" id="2_rrgx1"]
-[ext_resource type="FontFile" uid="uid://bo58fx4y1v6wc" path="res://Assets/Fonts/MainMenu/Cinzel-Bold.otf" id="3_mb823"]
 [ext_resource type="LabelSettings" uid="uid://blebc0bsoclqi" path="res://Resources/PauseMenuFontSettings.tres" id="3_mdjdl"]
 [ext_resource type="Texture2D" uid="uid://c7y3ocy7r8mlo" path="res://Resources/Hover Button.tres" id="4_mdjdl"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_rrgx1"]
-font = ExtResource("3_mb823")
-font_size = 20
-font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_color = Color(0, 0, 0, 0.3254902)
-shadow_offset = Vector2(2, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mb823"]
 atlas = ExtResource("2_ddsy3")
@@ -33,7 +22,8 @@ region = Rect2(4.713, 232.111, 54.31, 18.078)
 atlas = ExtResource("2_ddsy3")
 region = Rect2(4.713, 232.111, 54.31, 18.078)
 
-[node name="UI Elements" type="CanvasLayer" unique_id=116541721]
+[node name="UI" type="CanvasLayer" unique_id=116541721]
+process_mode = 2
 script = ExtResource("1_vhyun")
 metadata/_edit_vertical_guides_ = [-107.0]
 
@@ -81,86 +71,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MainMenu" type="Control" parent="." unique_id=332859862]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackGround" type="TextureRect" parent="MainMenu" unique_id=308654076]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 6
-
-[node name="Title" type="TextureRect" parent="MainMenu" unique_id=1078338305]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=197548666]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1019593013]
-layout_mode = 2
-
-[node name="Continue" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=75493906]
-layout_mode = 2
-
-[node name="Continue" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/Continue" unique_id=2146446504]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_rrgx1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="New Game" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=600687882]
-layout_mode = 2
-
-[node name="Settings" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1982737368]
-layout_mode = 2
-
-[node name="Settings" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/Settings" unique_id=1849851060]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_rrgx1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" type="TextureButton" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=660639494]
-layout_mode = 2
-
-[node name="Quit" type="Label" parent="MainMenu/CenterContainer/VBoxContainer/Quit" unique_id=1107402446]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_rrgx1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PauseMenu" type="Control" parent="." unique_id=1675255234]
+visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,10 +90,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.05279708, 0.019106902, 0.019106902, 0.4392157)
+color = Color(0.05, 0.018000001, 0.018000001, 0.29803923)
 
 [node name="Panel" type="TextureRect" parent="PauseMenu" unique_id=1279433509]
 custom_minimum_size = Vector2(100, 100)
+layout_direction = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,11 +106,16 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Title" type="Label" parent="PauseMenu/Panel" unique_id=661967937]
-layout_mode = 0
-offset_left = 475.0
-offset_top = 27.0
-offset_right = 682.0
-offset_bottom = 106.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41200003
+anchor_top = 0.042000003
+anchor_right = 0.59900004
+anchor_bottom = 0.17
+offset_left = 0.37597656
+offset_top = -0.21600151
+offset_right = -0.048034668
+offset_bottom = -0.16000366
 text = "PAUSED"
 label_settings = ExtResource("3_mdjdl")
 horizontal_alignment = 1
@@ -204,30 +123,42 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Margin" type="MarginContainer" parent="PauseMenu/Panel" unique_id=1230319787]
-layout_mode = 0
-offset_left = 374.0
-offset_top = 86.0
-offset_right = 792.0
-offset_bottom = 571.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32500002
+anchor_top = 0.133
+anchor_right = 0.68700004
+anchor_bottom = 0.88100004
+offset_left = -0.4000244
+offset_top = -0.18399811
+offset_right = 0.57592773
+offset_bottom = 0.11199951
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 50
+metadata/_edit_use_anchors_ = true
 
 [node name="Buttons" type="VBoxContainer" parent="PauseMenu/Panel/Margin" unique_id=125369975]
+clip_contents = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
 [node name="Resume" type="TextureButton" parent="PauseMenu/Panel/Margin/Buttons" unique_id=1339014339]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_mdjdl")
 texture_hover = ExtResource("4_mdjdl")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="PauseMenu/Panel/Margin/Buttons/Resume" unique_id=2144184856]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_right = 0.897
 anchor_bottom = 1.0
+offset_left = 0.099998474
+offset_right = -0.1000061
 grow_horizontal = 2
 grow_vertical = 2
 text = "RESUME"
@@ -238,15 +169,20 @@ vertical_alignment = 1
 [node name="Settings" type="TextureButton" parent="PauseMenu/Panel/Margin/Buttons" unique_id=756560347]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_vhyun")
 texture_pressed = ExtResource("4_mdjdl")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="PauseMenu/Panel/Margin/Buttons/Settings" unique_id=705660581]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.120000005
+anchor_top = 0.075
+anchor_right = 0.90000004
+anchor_bottom = 0.93700004
+offset_bottom = 0.039993286
 grow_horizontal = 2
 grow_vertical = 2
 text = "SETTINGS"
@@ -257,6 +193,7 @@ vertical_alignment = 1
 [node name="SaveExit" type="TextureButton" parent="PauseMenu/Panel/Margin/Buttons" unique_id=1405378962]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = SubResource("AtlasTexture_ycnh6")
 texture_hover = ExtResource("4_mdjdl")
 ignore_texture_size = true
@@ -265,13 +202,14 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="PauseMenu/Panel/Margin/Buttons/SaveExit" unique_id=380839013]
 custom_minimum_size = Vector2(210, 50)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 42.999996
-offset_top = 7.9999995
-offset_right = 43.0
-offset_bottom = 8.0
+anchors_preset = -1
+anchor_left = 0.117000006
+anchor_top = 0.1
+anchor_right = 0.89000005
+anchor_bottom = 0.90000004
+offset_left = -0.1000061
+offset_right = 58.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
@@ -282,6 +220,7 @@ vertical_alignment = 1
 
 [node name="Settings" type="Control" parent="." unique_id=1888474246]
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,8 +228,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DarkOverlay" type="ColorRect" parent="Settings" unique_id=1223713393]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.018000001, 0.018000001, 0.29803923)
+
+[node name="Panel" type="TextureRect" parent="Settings" unique_id=388915943]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mb823")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Settings/Panel" unique_id=1190576078]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 27.0
+offset_right = 682.0
+offset_bottom = 106.0
+text = "SETTINGS"
+label_settings = ExtResource("3_mdjdl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Margin" type="MarginContainer" parent="Settings/Panel" unique_id=1182875089]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 86.0
+offset_right = 792.0
+offset_bottom = 571.0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="Navbar" type="HBoxContainer" parent="Settings/Panel/Margin" unique_id=2119067194]
+layout_mode = 2
+
+[node name="Display" type="TextureButton" parent="Settings/Panel/Margin/Navbar" unique_id=91081466]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Margin/Navbar/Display" unique_id=735216886]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Audio" type="TextureButton" parent="Settings/Panel/Margin/Navbar" unique_id=1693703238]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Margin/Navbar/Audio" unique_id=542249069]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Controls" type="TextureButton" parent="Settings/Panel/Margin/Navbar" unique_id=1684495153]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Margin/Navbar/Controls" unique_id=707957396]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Credits" type="TextureButton" parent="Settings/Panel/Margin/Navbar" unique_id=1261489950]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Margin/Navbar/Credits" unique_id=1306098349]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="GameOver" type="Control" parent="." unique_id=570433993]
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -304,7 +322,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -104.0
-offset_top = 212.0
+offset_top = 143.0
 offset_right = -104.0
 offset_bottom = 212.0
 grow_horizontal = 2

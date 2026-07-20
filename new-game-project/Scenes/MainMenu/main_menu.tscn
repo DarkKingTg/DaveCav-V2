@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://bmegpkuhe5sjw"]
+
+[ext_resource type="Script" uid="uid://3yuowc4bk1qn" path="res://Scripts/Managers/MainMenuManager.gd" id="1_qgdf6"]
+[ext_resource type="FontFile" uid="uid://bo58fx4y1v6wc" path="res://Assets/Fonts/MainMenu/Cinzel-Bold.otf" id="1_uqdog"]
+[ext_resource type="LabelSettings" uid="uid://blebc0bsoclqi" path="res://Resources/PauseMenuFontSettings.tres" id="1_v763k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v763k"]
+font = ExtResource("1_uqdog")
+font_size = 20
+font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.3254902)
+shadow_offset = Vector2(2, 2)
+
+[node name="MainMenu" type="Control" unique_id=2010164657]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgdf6")
+
+[node name="BackGround" type="TextureRect" parent="." unique_id=846842135]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=2144154238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4392157)
+
+[node name="Title" type="TextureRect" parent="." unique_id=465495076]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1171531520]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1372050104]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=1333656423]
+layout_mode = 2
+
+[node name="Continue" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=110020402]
+layout_mode = 2
+
+[node name="Continue" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Continue" unique_id=1758345499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("1_v763k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New Game" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1656366466]
+layout_mode = 2
+
+[node name="NewGame" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/New Game" unique_id=435900682]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = ExtResource("1_v763k")
+
+[node name="Settings" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1451971890]
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Settings" unique_id=1411923770]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_v763k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1301239433]
+layout_mode = 2
+
+[node name="Quit" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Quit" unique_id=420958116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_v763k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=258787272]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=227607573]
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
