@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bgsmjc881igrr"]
+
+[ext_resource type="FontFile" uid="uid://bycr6hmgufy3t" path="res://Assets/Fonts/Notes, Journals and Dialogues/SpecialElite.ttf" id="1_4b5le"]
+[ext_resource type="Script" uid="uid://be6uvo6sjw5ls" path="res://Scripts/Cutscenes/intro_ui.gd" id="1_tjil7"]
+
+[node name="IntroUI" type="CanvasLayer" unique_id=206686395]
+script = ExtResource("1_tjil7")
+
+[node name="BlackOverlay" type="ColorRect" parent="." unique_id=1020622198]
+modulate = Color(1, 1, 1, 0.6509804)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.014999987, 0.09, 0)
+
+[node name="StoryContainer" type="MarginContainer" parent="." unique_id=845077316]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StoryLabel" type="RichTextLabel" parent="StoryContainer" unique_id=1478910241]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_fonts/normal_font = ExtResource("1_4b5le")
+theme_override_font_sizes/normal_font_size = 16
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2
