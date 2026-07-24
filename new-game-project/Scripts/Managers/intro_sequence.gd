@@ -13,7 +13,7 @@ class_name IntroManager
 @export var thunder_storm: Node
 
 @export_group("Optional UI")
-@export var objective_ui: Node
+@onready var objective_ui: ObjectiveUI = get_tree().current_scene.get_node("UI/ObjectiveUI")
 @export var control_hint_ui: Node
 
 
@@ -100,16 +100,12 @@ func play_intro() -> void:
 	####################################################
 	# WAIT FOR STORY
 	####################################################
-	print("Waiting for intro...")
 	await intro_ui.intro_finished
-	print("Intro finished.")
 
 	####################################################
 	# WAIT FOR PLAYER
 	####################################################
-	print("Waiting for walk...")
 	await cutscene_manager.walk_finished
-	print("Walk finished.")
 
 	####################################################
 	# WAIT FOR ANIMATIONS
@@ -129,9 +125,8 @@ func play_intro() -> void:
 	####################################################
 	# END CUTSCENE
 	####################################################
-	print("Ending cutscene...")
 	cutscene_manager.end_cutscene()
-	print("Cutscene ended.")
+	objective_ui.show_objectives()
 
 	####################################################
 	# OBJECTIVE

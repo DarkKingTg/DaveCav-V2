@@ -13,27 +13,26 @@
 [ext_resource type="PackedScene" uid="uid://bgsmjc881igrr" path="res://Scenes/Cutscenes/intro_ui.tscn" id="11_d1ilt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
+size = Vector2(11.5, 11)
 
 [node name="Main" type="Node2D" unique_id=1377669632]
 script = ExtResource("1_6bp64")
-
-[node name="UI" parent="." unique_id=116541721 instance=ExtResource("6_21xkr")]
 
 [node name="Main Enterance" parent="." unique_id=2017178467 instance=ExtResource("1_8gbba")]
 script = ExtResource("4_hptm8")
 
 [node name="GateTarget" type="Area2D" parent="Main Enterance" unique_id=2112816464]
-position = Vector2(640, 360)
+position = Vector2(641, 359)
 scale = Vector2(2, 2)
 collision_layer = 128
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main Enterance/GateTarget" unique_id=2094625108]
-position = Vector2(-1.5, -5)
+position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="StopPoint" type="Marker2D" parent="Main Enterance/GateTarget" unique_id=1853625511]
-position = Vector2(-1.5, -5)
+position = Vector2(-0.5, -9)
 
 [node name="MainPlayer" parent="Main Enterance" unique_id=1553743187 instance=ExtResource("3_kry3j")]
 position = Vector2(599, 933)
@@ -75,5 +74,7 @@ thunder_storm = NodePath("../../MainPlayer/ThunderStorm")
 [node name="Ending Sequence" type="Node" parent="Main Enterance/CutSceneManager" unique_id=1554556066]
 
 [node name="IntroUI" parent="Main Enterance" unique_id=206686395 instance=ExtResource("11_d1ilt")]
+
+[node name="UI" parent="." unique_id=116541721 instance=ExtResource("6_21xkr")]
 
 [connection signal="mouse_entered" from="Main Enterance/GateTarget" to="Main Enterance/CutSceneManager" method="_on_gate_target_mouse_entered"]

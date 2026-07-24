@@ -1,11 +1,8 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://blebc0bsoclqi"]
 
-[ext_resource type="FontFile" uid="uid://bo58fx4y1v6wc" path="res://Assets/Fonts/MainMenu/Cinzel-Bold.otf" id="1_1o27c"]
-
 [resource]
 line_spacing = 1.0
 paragraph_spacing = 1.0
-font = ExtResource("1_1o27c")
 font_size = 24
 outline_size = 4
 outline_color = Color(0.23921569, 0.11372549, 0.11372549, 1)

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cx5345xnsqi7y" path="res://Scripts/UI/pause_menu.gd" id="2_rrgx1"]
 [ext_resource type="LabelSettings" uid="uid://blebc0bsoclqi" path="res://Resources/PauseMenuFontSettings.tres" id="3_mdjdl"]
 [ext_resource type="Texture2D" uid="uid://c7y3ocy7r8mlo" path="res://Resources/Hover Button.tres" id="4_mdjdl"]
+[ext_resource type="PackedScene" uid="uid://u2tn65ksna41" path="res://Scenes/UI/objective_ui.tscn" id="6_la1fj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mb823"]
 atlas = ExtResource("2_ddsy3")
@@ -317,18 +318,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Transition" type="Control" parent="." unique_id=988032150]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = 143.0
-offset_right = -104.0
-offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900904192]
+
+[node name="ObjectiveUI" parent="." unique_id=1568294744 instance=ExtResource("6_la1fj")]
 
 [connection signal="pressed" from="PauseMenu/Panel/Margin/Buttons/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Margin/Buttons/Settings" to="PauseMenu" method="_on_settings_pressed"]

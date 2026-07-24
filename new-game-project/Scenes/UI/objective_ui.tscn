@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://u2tn65ksna41"]
+
+[ext_resource type="Script" uid="uid://crynnr2pcelru" path="res://Scripts/UI/objective_ui.gd" id="1_f3f65"]
+[ext_resource type="FontFile" uid="uid://bycr6hmgufy3t" path="res://Assets/Fonts/Notes, Journals and Dialogues/SpecialElite.ttf" id="1_q4fvn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2qpw"]
+bg_color = Color(0, 0, 0, 0.3764706)
+border_color = Color(0.8682848, 0.8682848, 0.8682848, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4fvn"]
+line_spacing = 1.0
+paragraph_spacing = 1.0
+font = ExtResource("1_q4fvn")
+outline_color = Color(0.5568628, 0, 0.5882353, 0.02745098)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f3f65"]
+load_path = "res://.godot/imported/MediavelFree.png-e69f17c7453d91607ca6b19f54ee3d3f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4fvn"]
+atlas = SubResource("CompressedTexture2D_f3f65")
+region = Rect2(21, 116, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4bsk"]
+atlas = SubResource("CompressedTexture2D_f3f65")
+region = Rect2(52, 116, 6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3f65"]
+atlas = SubResource("CompressedTexture2D_f3f65")
+region = Rect2(21, 117, 6, 9)
+
+[sub_resource type="Animation" id="Animation_q4fvn"]
+resource_name = "Colapse"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1020, 0), Vector2(1247, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l4bsk"]
+resource_name = "Expand"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1247, 0), Vector2(1020, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f3f65"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1020, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_biy4r"]
+resource_name = "Show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 0), Vector2(1020, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4bsk"]
+_data = {
+&"Colapse": SubResource("Animation_q4fvn"),
+&"Expand": SubResource("Animation_l4bsk"),
+&"RESET": SubResource("Animation_f3f65"),
+&"Show": SubResource("Animation_biy4r")
+}
+
+[node name="ObjectiveUI" type="CanvasLayer" unique_id=1568294744]
+visible = false
+script = ExtResource("1_f3f65")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=872686144]
+anchors_preset = -1
+anchor_left = 0.79700005
+anchor_right = 1.0
+anchor_bottom = 0.29200003
+offset_left = -0.16003418
+offset_right = -0.00036621094
+offset_bottom = -0.24002075
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1668123604]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2qpw")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=972087292]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.25
+anchor_right = 0.4
+anchor_bottom = 0.25
+offset_left = 23.0
+offset_top = -52.5
+offset_right = 123.0
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1873332754]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1923293557]
+layout_mode = 2
+text = "
+OBJECTIVES"
+label_settings = SubResource("LabelSettings_q4fvn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ObjectiveList" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1296990239]
+custom_minimum_size = Vector2(100, 180)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CollapseButton" type="TextureButton" parent="MarginContainer/Panel" unique_id=317011715]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 0.081
+anchor_bottom = 0.957
+offset_right = 8.940001
+offset_bottom = 0.02999878
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_q4fvn")
+texture_pressed = SubResource("AtlasTexture_l4bsk")
+texture_hover = SubResource("AtlasTexture_f3f65")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1134206149]
+libraries/ = SubResource("AnimationLibrary_l4bsk")
+
+[connection signal="pressed" from="MarginContainer/Panel/CollapseButton" to="." method="_on_collapse_button_pressed"]

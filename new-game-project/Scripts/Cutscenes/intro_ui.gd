@@ -18,16 +18,16 @@ signal intro_finished
 ####################################################
 
 @export_group("Typing")
-@export var typing_speed := 0.04
-@export var line_delay := 1.5
-@export var reveal_before_last_lines := 1
+@export var typing_speed := 0.025
+@export var line_delay := 1.0
+@export var reveal_before_last_lines := 5
 
 @export_group("Fade")
 @export var fade_duration := 1.2
 @export var overlay_alpha := 0.65
 
 @export_group("Story Animation")
-@export var story_move_duration := 1.2
+@export var story_move_duration := 2.0
 @export var bottom_margin := 80.0
 
 @export_group("Story Fade")
@@ -40,13 +40,9 @@ signal intro_finished
 
 var story_lines := [
 	"Three days ago...",
-	"",
 	"I received a strange letter.",
-	"",
 	"It spoke of an abandoned mansion...",
-	"",
 	"No one who entered ever returned.",
-	"",
 	"Tonight...",
 	"",
 	"I'm going to uncover the truth."

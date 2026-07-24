@@ -40,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.4392157)
+color = Color(0, 0, 0, 0.6313726)
 
 [node name="Title" type="TextureRect" parent="." unique_id=465495076]
 layout_mode = 1
@@ -52,67 +52,98 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1171531520]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=931685560]
+custom_minimum_size = Vector2(800, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -360.0
+offset_right = 400.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=575147239]
+custom_minimum_size = Vector2(600, 720)
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 1.69
+
+[node name="Continue" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=328383325]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+
+[node name="Continue" type="Label" parent="MarginContainer/VBoxContainer/Continue" unique_id=2096783771]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -16.0
+offset_right = -3.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1372050104]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=1333656423]
-layout_mode = 2
-
-[node name="Continue" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=110020402]
-layout_mode = 2
-
-[node name="Continue" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Continue" unique_id=1758345499]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(0.9842999, 1)
+text = "Continue"
 label_settings = ExtResource("1_v763k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="New Game" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1656366466]
+[node name="New Game" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=549725867]
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 
-[node name="NewGame" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/New Game" unique_id=435900682]
+[node name="NewGame" type="Label" parent="MarginContainer/VBoxContainer/New Game" unique_id=1385133342]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 238.0
+offset_top = 30.0
+offset_right = 369.0
+offset_bottom = 59.0
+text = "New Game"
 label_settings = ExtResource("1_v763k")
 
-[node name="Settings" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1451971890]
+[node name="Settings" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=674909831]
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 
-[node name="Settings" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Settings" unique_id=1411923770]
+[node name="Settings" type="Label" parent="MarginContainer/VBoxContainer/Settings" unique_id=1208976651]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 367.0
+offset_right = 7.0
+offset_bottom = 391.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Settings"
 label_settings = SubResource("LabelSettings_v763k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1301239433]
+[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer" unique_id=1182589602]
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 
-[node name="Quit" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Quit" unique_id=420958116]
+[node name="Quit" type="Label" parent="MarginContainer/VBoxContainer/Quit" unique_id=227783025]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 464.0
+offset_right = 6.0
+offset_bottom = 515.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Quit
+"
 label_settings = SubResource("LabelSettings_v763k")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -120,8 +151,3 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=258787272]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=227607573]
-
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
